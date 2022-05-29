@@ -1,0 +1,14 @@
+        public function upluno(array $dados,$where,$where2){
+            $this->conexao =$this->conectar();
+            $this->dados=$dados;
+            $SET='';
+            foreach($dados as $key=>$values){
+                $SET .="$key=$values,";
+            }
+            $SET=rtrim($SET,',');
+
+            $this->sql="UPDATE presença SET $SET WHERE id_aluno=$where and codigo_materia=$where2;";
+            $exe=$this->conexao->query($this->sql) ;
+            return $exe;
+
+        }
